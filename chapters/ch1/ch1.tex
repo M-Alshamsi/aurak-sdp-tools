@@ -1,0 +1,106 @@
+\chapter{Introduction}
+\begin{chapterpage}
+  \noindent
+  This is the \texttt{chapterpage}\index{chapterpage} environment.
+  It has to follow after every chapter, even if its contents are empty, because it sets up a few things for the remainder of the chapter.
+  This environment also serves as a good place to put introductory material for the chapter, like a few paragraphs explaining what the chapter is about.
+
+  If you put text here, it's good to put a \verb|\noindent| before the first paragraph\ldots because it's the first paragraph.
+
+  Anything you put after \verb|\chapter| and before \texttt{chapterpage} will appear on the previous page with the big ``$CHAPTER$'' header.
+  I don't recommend putting any text immediately \textit{before} the \texttt{chapterpage}; because that's what the \texttt{chapterpage} is for.
+  If you do want to put something before it anyway, I recommend doing no more than an ornament or an image, and being consistent with adding one to every chapter.
+
+  \vskip\baselineskip
+
+  \noindent
+  Surprise citation \cite{mid}!
+  This is to test the bibliography (page~\pageref{chap:bibliography}) and further reading (page~\pageref{chap:furtherreading}).
+
+  \vskip\baselineskip
+
+  \noindent
+  You can use \verb|\minitoc|\index{minitoc!control sequence} to typeset the sections and subsections of the present chapter in a format similar to the original table of contents:
+
+  \vskip\baselineskip
+  \minitoc
+  \vskip\baselineskip
+  \noindent
+  The \textsf{minitoc}\index{minitoc!package} package does generate a ton of auxiliary files during compilation, so don't be surprised if you see the folder get filled up.%
+  \footnote{\color{gray3}
+  If you're unaware of what aux files are for: \LaTeX{} compiles the document in one shot, from start to finish, and doesn't backtrack.
+  So if it runs into information that it needs to reference in an earlier part of the document\,---chapter and section numbers \& titles; figure numbers and captions; etc.---\, it will save that info in a file, so that the next time the compiler runs and needs this information, it can look in the relevant file to find it.}
+
+  \vfill
+  \begin{figure}[h]
+    \hrulefill\vskip1pt%
+    {\color{gray5}\rule{\textwidth}{\dimexpr49pt+1cm\relax}}%
+    \vspace*{\dimexpr-47pt-1cm\relax}
+
+    {\color{white}
+    \ amazing figure\hfill\vskip0.5cm{\centering insane graphics\par}\vskip0.5cm\hfill love to see it\ \hbox{}\vskip1pt}\hrulefill
+    \caption[Text Width Figure]{\color{gray3}Text Width Figure}
+  \end{figure}
+\end{chapterpage}
+
+\noindent
+The above is a \texttt{widefig},\index{widefig} one of the environments created for this document class.
+It's a wrapper around the \texttt{figure} environment, so you can use \verb|\caption| inside it.
+It passes ``\kern -1pt \texttt{[h]}\kern -1pt'' to the \texttt{figure} by default, but you can override that with the optional argument.
+
+\begin{widefig}[t]%
+  {\color{gray9}
+  \rule{\dimexpr0.22\widefigwidth\relax}{30ex}\hfill\color{gray7}
+  \rule{\dimexpr0.22\widefigwidth\relax}{30ex}\hfill\color{gray5}
+  \rule{\dimexpr0.22\widefigwidth\relax}{30ex}\hfill\color{gray3}
+  \rule{\dimexpr0.22\widefigwidth\relax}{30ex}% this comment is important. feel free to remove it and try to figure out what happened :)
+}
+  \vskip1pt
+  \hrulefill
+  \captionof{figure}{Extra-Width Figure}
+\end{widefig}
+
+\begin{marginfig}
+  \hrulefill\vskip1pt%
+  {\color{gray8}\rule{\textwidth}{\dimexpr49pt+5cm\relax}}%
+  \vspace*{\dimexpr-47pt-5cm\relax}
+
+  \ amazing figure\hfill\vskip2.5cm{\centering insane graphics\par}\vskip2.5cm\hfill love to see it\ \hbox{}\vskip1pt\hrulefill
+  \captionof{figure}{Margin Figure.\label{fig:mar1}}
+\end{marginfig}
+
+To the side is another environment, the \texttt{marginfig}.\index{marginfig}
+Due to some \LaTeX{} esoterica that I don't understand, the \texttt{figure} environment can't be used in margins.
+What's done instead is \texttt{marginpar} with a \texttt{minipage} inside it.
+So you'll need to use ``\verb|\captionof{figure}{your caption}|'' instead of ``\verb|\caption{your caption}|''.
+
+Margin figures have no protection against flowing off the page.
+To~deal with this\,---and also for times when you want to align the figure with something specific---\,you have the choice to provide to the environment an optional argument, which specifies a vertical (downward) offset.
+If~you give it a negative length, the figure will go~up instead, as you might expect.
+I~recommend moving margin figures by integer increments (or~decrements) of~\verb|\baselineskip|,%
+\footnote{I have this set to 15\,pt.
+If you're unaware, \texttt{\textbackslash{}baselineskip} is \textit{basically} a measure of the vertical distance from one~line and the next.
+To clarify: look at the second paragraph of this page, beginning with ``To the side''.
+The~vertical distance between the top of the `T' there, and the top of the `T' in ``\LaTeX'' on the next line, is~equal to the~\texttt{\textbackslash{}baselineskip}.}
+according to how many lines you want to move the figure by.
+In the case of Figure~\ref{fig:mar1}, I placed its code immediately before the ``To the side\ldots'' paragraph; but if I wanted it to start on the line containing {\setlength{\fboxsep}{0pt}\fbox{this box\strut}}, I could begin the environment as~below:
+\begin{center}
+  \verb|\begin{marginfig}[14\baselineskip]|
+\end{center}
+knowing that the box is 14 lines below where the margin figure would be placed \textit{without} the~argument.
+Feel free to try it yourself: add the argument and recompile this document.
+
+\vskip\baselineskip
+
+\noindent
+\textit{The rest of this document will serve purely as an outline for the SDP.
+Do preserve the section titles and order.}
+
+\section{Problem Statement and Purpose}
+1 page
+\section{Project and Design Objectives}
+1 page
+\section{Intended Outcomes and Deliverables}
+1 page
+\section{Summary of Report Structure}
+2 pages

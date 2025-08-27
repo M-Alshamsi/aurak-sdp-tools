@@ -1,0 +1,141 @@
+\documentclass{aurak-sdp}
+
+% debug
+\usepackage{lipsum}
+\usepackage{printlen}
+
+\addbibresource{refs.bib}
+
+% Replace these as necessary
+\def\projtitle{A Rather Very Long Title About Some Things}
+\def\shorttitle{Short Title} % For use in headers and title page. Has to be catchy.
+\def\coursecode{CSCI\,492} % or whatever
+\def\prof{Prof.\@ Whom Ever} % The \@ corrects the space after the dot; keep it
+% Use the correct title for your supervisor!
+\def\uni{American University of Ras Al Khaimah}
+\def\school{School of Engineering and Computing}
+\def\dept{Department of Computer Science and Engineering}
+\def\yr{2024--2025}
+
+% You may also renewcommand*{\maketitle} if you want,
+% to rearrange the cover page. For AURAK SDPs, you
+% have to keep ALL the information in there including
+% the AURAK logo, but any (sane) layout will do.
+
+% Definitely do renewcommand{\titlepagedecoration}
+% and replace it with something of your own concoction.
+
+\begin{document}
+\newgeometry{inner=2.5cm,outer=2.5cm,top=3.5cm,bottom=2cm}
+\pagestyle{empty}
+\pdfbookmark[0]{Cover}{cover}
+\fontsize{12}{15}\selectfont
+
+\maketitle
+\frontmatter % Necessary after maketitle
+\input{frontmatter}
+
+\cleardoublepage
+{
+\dominitoc % Necessary before any of toc, lof, lot
+\tableofcontents
+
+\clearpage
+\listoffigures
+
+\clearpage
+\listoftables
+
+\clearpage
+\listofsymbolshdr % Only the header, since the list is populated manually.
+% Note this is not the same as the glossary!
+
+\noindent
+This is where you should put all the symbols used and abbreviations (must be sorted).
+
+\begin{longtblr}[label=none,entry=none]{
+    colspec={Q[r]|Q[l]}, % Fiddle with the relative widths here if needed. See tabularray package docs
+    width=\textwidth
+  }
+  \textbf{Symbol/Abbr.} & \textbf{Meaning}\\\hline
+  Abbr. & Abbreviation\\
+  API & Application Programming Interface\\
+  AURAK & \uni\\
+  JSON & JavaScript Object Notation\\
+  SDK & Software Development Kit\\
+  UI & User Interface\\
+  $x$ & is the symbol that marks the spot.\\
+  $z$ & denotes depth (of sleep).\\
+\end{longtblr}
+
+\restoregeometry
+}
+\mainmatter % Necessary before chapter 1.
+\input{chapters/ch1/ch1}
+
+\chapter{Background}
+\input{chapters/ch2/ch2}
+
+% [brackets] are the ToC entry --- {braces} are in-text titles.
+\chapter[Literature Review]{Literature Review}
+\input{chapters/ch3/ch3}
+
+\chapter[Project Management]{Project Management}
+\input{chapters/ch4/ch4}
+
+\chapter[Requirements Analysis]{Requirements Analysis}
+\input{chapters/ch5/ch5}
+
+\chapter[System Analysis \& Design]{System Analysis\break\& Design}
+\input{chapters/ch6/ch6}
+
+\chapter[Implementation \& Testing]{Implementation\break\& Testing}
+\input{chapters/ch7/ch7}
+
+\chapter[Impact of the Engineering Solution]{Impact of the Engineering Solution}
+\input{chapters/ch8/ch8}
+
+\chapter[Conclusions and Recommendations]{Conclusions and Recommendations}
+\input{chapters/ch9/ch9}
+
+%% BACKMATTER
+\bibchapter
+\begin{chapterpage}
+\end{chapterpage}\pagestyle{bib}
+{
+\raggedright % Looks better in my view
+\nocite{*}
+\printbibliography[category=cited,heading=none]
+}
+
+\frchapter % Further Reading := in bib file but not cited
+\begin{chapterpage}
+\end{chapterpage}\pagestyle{fr}% for real...
+{
+\raggedright
+\printbibliography[notcategory=cited,heading=none]
+}
+
+\appendix
+\setcounter{chapter}{3} % Appendix D; not A
+\chapter{WBS Dictionary}\label{dict}
+\begin{chapterpage}
+\end{chapterpage}
+\input{dictionary}
+
+\cleardoublepage
+% ^ Has to be done manually since we're setting the counter afterward.
+% Otherwise, the last page of appendix D would show F--\thepage!
+\setcounter{chapter}{6}
+\chapter{Glossary}
+\begin{chapterpage}
+\end{chapterpage}\pagestyle{gl}
+\input{glossary}
+
+\cleardoublepage
+\setcounter{chapter}{8}
+\chapter{Index}
+\begin{chapterpage}
+\end{chapterpage}
+\printindex
+\end{document}
