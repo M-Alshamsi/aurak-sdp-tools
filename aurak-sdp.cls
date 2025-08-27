@@ -740,8 +740,7 @@ end
     \footnotesize
     \noindent Submitted in partial fulfillment of the requirements of the B.Sc.\@ Degrees
     in Computer Science, Computer Engineering, and Artificial Intelligence
-    % ^ adjust as needed
-    at the \uni.
+    at the \dept{} in the \uni.
   \end{titlepage}
 }
 
