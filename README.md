@@ -59,7 +59,7 @@ The designers, typographers, authors, and students behind *Concrete Mathematics*
 The TeX Stack Exchange forum for many explanations and a few nontrivial code snippets.
 
 From AURAK:
-- Dr. Khouloud Salameh for support and for clarification on requirements required of the report --- this class and template wouldn't have become an official thing if not for her help. Likewise, Nour Mostafa for trailblazing with a fancy LaTeX report a semester before me.
+- Dr. Khouloud Salameh for support and for clarification on requirements required of the report — this class and template wouldn't have become an official thing if not for her help. Likewise, Nour Mostafa for trailblazing with a fancy LaTeX report a semester before me.
 - Hazim Kaloub for suggestions and idea-bouncing.
 - Yasmine Abou Saeb for idea-bouncing and proofreading of tutorial text.
 - Creator of the original MS Word template for inspiration and initial layout. (I'm sorry: Who is this?)
