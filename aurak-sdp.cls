@@ -298,7 +298,7 @@
 \titleformat{\section}[hang]{\large\bfseries}{\makebox[1.5cm]{\lslmr\thesection\hfill}}{0pt}{\lslmr\MakeUppercase}
 \titleformat{\subsection}[hang]{\normalsize\bfseries}{\makebox[1.5cm]{\lslmr\thesubsection\hfill}}{0pt}{\lslmr\MakeUppercase}
 \titleformat{\subsubsection}[hang]{\normalsize\bfseries}{}{0pt}{\lslmr\MakeUppercase}
-\titleformat{\paragraph}[runin]{\bfseries}{}{0pt}{\lslmr\periodafter}
+\titleformat{\paragraph}[runin]{\bfseries}{}{0pt}{\fontfamily{lmr}\selectfont\periodafter}
 % Note: makebox width must not depend on font size, so don't use em, ex, etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% HEADERS AND FOOTERS
@@ -560,6 +560,8 @@ end
 \end{filecontents*}
 \directlua{dofile("padnum.lua")}
 \newcommand\padnum[2][4]{\directlua{padnum(#1,#2)}}
+
+\newlist{reql}{enumerate}{5}
 
 \newenvironment{req}[2]{%
   \begingroup
