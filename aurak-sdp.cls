@@ -112,7 +112,8 @@
 % Fonts and language
 \RequirePackage{fontspec}
 \RequirePackage[english]{babel}
-\setmainfont{CMU Concrete}
+\setmainfont[Numbers=OldStyle]{CMU Concrete}
+\newcommand{\lining}{\addfontfeature{Numbers=Lining}}
 
 % use Euler math font
 \RequirePackage[euler-digits,OT1]{eulervm}
@@ -546,7 +547,6 @@ headings_flag 1
 \indexsetup{level=\section*,firstpagestyle=idx}
 % TODO: 48 is ballpark, figure it out later
 \makeindex[columns=2, title={\vspace*{-48pt}}, options = -s style]
-%\indexsetup{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LISTS
 
@@ -605,9 +605,9 @@ end
 \renewcommand{\cftfigpresnum}{\fontfamily{lmr}\selectfont\bfseries}
 \renewcommand{\cfttabpresnum}{\fontfamily{lmr}\selectfont\bfseries}
 \renewcommand{\cftchappagefont}{\fontfamily{lmr}\selectfont\large\bfseries}
-\renewcommand{\cftsecpagefont}{\small}
-\renewcommand{\cftfigpagefont}{\small}
-\renewcommand{\cfttabpagefont}{\small}
+\renewcommand{\cftsecpagefont}{\small\lining}
+\renewcommand{\cftfigpagefont}{\small\lining}
+\renewcommand{\cfttabpagefont}{\small\lining}
 \makeatletter % Below may be increased if appendix page numbers get too big.
   \renewcommand{\@tocrmarg}{2em}
   \renewcommand{\@pnumwidth}{2em}
