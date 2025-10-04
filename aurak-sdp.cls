@@ -23,13 +23,13 @@
 
 \NeedsTeXFormat{LaTeX2e}
 % Remember to change the date whenever the class is updated
-\ProvidesClass{aurak-sdp}[2025-08-27 AURAK Senior Design Project Report]
+\ProvidesClass{aurak-sdp}[2025-10-05 AURAK Senior Design Project Report]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PRELIMINARY DECLARATIONS %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\LoadClass[a4paper,twoside]{report}
+\LoadClass[letter,twoside]{report}
 
 %%%%%%%%%%%%%
 %% OPTIONS %%
@@ -61,7 +61,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DIMENSIONS
 
-\RequirePackage[inner=1.5cm,top=1cm,bottom=2.5cm,includeheadfoot,textwidth=\dimexpr13.5cm-\marginparsep\relax,marginpar=4.5cm,ignoremp]{geometry}
+\RequirePackage[inner=1.5cm,top=3.5cm,bottom=2cm,textwidth=\dimexpr13.5cm-\marginparsep\relax,marginpar=4.5cm,ignoremp]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FLOATS AND SUCH
 
@@ -178,9 +178,11 @@
 \renewcommand*{\abstract}{%
 \pagestyle{abs}
 \pdfbookmark[0]{Abstract}{abs}
-\begin{center}
+{
+\centering
   \fontfamily{lmr}\selectfont\textbf{ABSTRACT}
-\end{center}
+\par
+}
 }
 
 \AddToHookWithArguments{cmd/chapter/before}{%
@@ -328,31 +330,29 @@
 \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\slshape\chaptername\ \thechapter.\ #1}}{}\renewcommand{\chaptitle}{#1}}
 \renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{\slshape\thesection.\ #1}}}
 
-\setlength{\headheight}{43.60004pt}
+%\setlength{\headheight}{43.60004pt}
 \setlength{\headsep}{25pt}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.0pt}
 
 % Adapted from https://tex.stackexchange.com/a/69149
-\makeatletter
-  \def\cleardoublepage{
-    \newgeometry{inner=2.5cm,outer=2.5cm,top=2.5cm,bottom=4.5cm}
-    \if@twoside
-      \ifodd\c@page\else
-        \vspace*{\fill}
-        \hfill
-        \begin{center}
-          \fontfamily{lmr}\selectfont\itshape\color{accent}This page intentionally left blank
-        \end{center}
-        \vspace{\fill}
-        \vspace{\fill}
-        \thispagestyle{empty}
-        \if@twocolumn\mbox{}\newpage\fi
-      \fi
+\def\cleardoublepage{
+  \newgeometry{inner=2.5cm,outer=2.5cm,top=2.5cm,bottom=4.5cm}
+  \if@twoside
+    \ifodd\c@page\else
+      \vspace*{\fill}
+      \hfill
+      \begin{center}
+        \fontfamily{lmr}\selectfont\itshape\color{accent}This page intentionally left blank
+      \end{center}
+      \vspace{\fill}
+      \vspace{\fill}
+      \thispagestyle{empty}
+      \if@twocolumn\mbox{}\newpage\fi
     \fi
-    \restoregeometry
-  }
-\makeatother
+  \fi
+  \restoregeometry
+}
 
 \fancypagestyle{abs}{%
   \fancyhf{}%
@@ -608,10 +608,8 @@ end
 \renewcommand{\cftsecpagefont}{\small\lining}
 \renewcommand{\cftfigpagefont}{\small\lining}
 \renewcommand{\cfttabpagefont}{\small\lining}
-\makeatletter % Below may be increased if appendix page numbers get too big.
-  \renewcommand{\@tocrmarg}{2em}
-  \renewcommand{\@pnumwidth}{2em}
-\makeatother
+\renewcommand{\@tocrmarg}{2em}
+\renewcommand{\@pnumwidth}{2em}
 % Hide subsections.
 \setcounter{tocdepth}{1}
 % Style toc, lof, lot headers.
@@ -619,20 +617,20 @@ end
 \renewcommand{\cftloftitlefont}{\normalfont\fontfamily{lmr}\selectfont\bfseries}
 \renewcommand{\cftlottitlefont}{\normalfont\fontfamily{lmr}\selectfont\bfseries}
 % Push toc/lof/lot headers up a bit.
-\renewcommand{\cftbeforetoctitleskip}{-25pt}
-\renewcommand{\cftbeforeloftitleskip}{-25pt}
-\renewcommand{\cftbeforelottitleskip}{-25pt}
+\renewcommand{\cftbeforetoctitleskip}{-12pt}
+\renewcommand{\cftbeforeloftitleskip}{-12pt}
+\renewcommand{\cftbeforelottitleskip}{-12pt}
 % Remove some of the gap between headers and the lists.
-\renewcommand{\cftaftertoctitleskip}{-10pt}
-\renewcommand{\cftafterloftitleskip}{-10pt}
-\renewcommand{\cftafterlottitleskip}{-10pt}
+\renewcommand{\cftaftertoctitleskip}{0pt}
+\renewcommand{\cftafterloftitleskip}{0pt}
+\renewcommand{\cftafterlottitleskip}{0pt}
 
 \AddToHook{cmd/tableofcontents/before}{%
-\newgeometry{inner=2.5cm,outer=2.5cm,top=1cm,bottom=1cm,includeheadfoot}
+\newgeometry{inner=2.5cm,outer=2.5cm,top=3.5cm,bottom=2cm}
 \thispagestyle{toc}
 \clearpage
 \hypertarget{toc}{}
-\renewcommand\contentsname{\begin{center}TABLE OF CONTENTS\end{center}}
+\renewcommand\contentsname{\centering TABLE OF CONTENTS\par}
 \pdfbookmark[0]{Table of Contents}{toc}
 }
 \AddToHook{cmd/tableofcontents/after}{%
@@ -641,7 +639,7 @@ end
 }
 
 \AddToHook{cmd/listoftables/before}{%
-\renewcommand{\listtablename}{\begin{center}LIST OF TABLES\end{center}}
+\renewcommand{\listtablename}{\centering LIST OF TABLES\par}
 \addtocontents{lot}{{\fontfamily{lmr}\selectfont\bfseries Table}~\hfill{\fontfamily{lmr}\selectfont\bfseries Page}\par}
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Tables}
@@ -651,7 +649,7 @@ end
 }
 
 \AddToHook{cmd/listoffigures/before}{%
-\renewcommand{\listfigurename}{\begin{center}LIST OF FIGURES\end{center}}
+\renewcommand{\listfigurename}{\centering LIST OF FIGURES\par}
 \addtocontents{lof}{{\fontfamily{lmr}\selectfont\bfseries Figure}~\hfill{\fontfamily{lmr}\selectfont\bfseries Page}\par}
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Figures}

@@ -42,7 +42,6 @@ Refine the class and template and add missing stuff:
 - Simplify chapterpage headers
 - Improve req list formatting
 - Tutorial for glossary, index, bibliography, further reading, wbs dict, user/system req lists, diagrams, ...
-- Heading height (abstract vs toc vs lof)
 - Proper documentation
 - Set up a build script for ease of use
 - Configuration options
@@ -82,7 +81,8 @@ But until then, I recommend keeping the class file as-is, and redefining things 
 There are a few commands that need this treatment.
 
 ## Template Files
-Template files (`template.tex`, `glossary.tex`, `frontmatter.tex`, `dictionary.tex`, and all files in the `chapters` directory) are CC-BY; attribution is enough if you build on top of the templates.
+Template files (`template.tex`, `glossary.tex`, `frontmatter.tex`, `dictionary.tex`, and all files in the `chapters` directory) are CC-0.
+Acknowledgement is appreciated but not required.
 
 ## AURAK Logo
 The AURAK logo files are property of the American University of Ras Al Khaimah.
