@@ -760,7 +760,8 @@ end
 % For typesetting code (might not be the best option).
 \RequirePackage{fancyvrb}
 \fvset{
-  numbers=left
+  numbers=left,
+  fontsize=\small
 }
 
 % Hyperlinks.
