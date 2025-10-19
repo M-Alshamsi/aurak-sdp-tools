@@ -548,6 +548,12 @@ headings_flag 1
 % TODO: 48 is ballpark, figure it out later
 \makeindex[columns=2, title={\vspace*{-48pt}}, options = -s style]
 
+% page 4 of https://www.ams.org/arc/tex/howto/index/0index-notes.pdf
+% useful little hack that allows referring to a synonymous entry
+% "zzzzz@" makes the "see also <other entry>" always be at the bottom
+\providecommand{\indexalso}[3]{%
+\index{#1!zzzzz@\emph{\alsoname} {#2}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LISTS
 
 \RequirePackage{enumitem}
