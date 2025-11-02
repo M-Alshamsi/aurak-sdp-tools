@@ -278,8 +278,8 @@
 \titlespacing*{\chapter}{0pt}{0pt}{15pt}
 \titlespacing*{\section}{0pt}{24.9pt}{7.5pt}
 \titlespacing*{\subsection}{0pt}{10.5pt}{7.5pt}
-\titlespacing*{\subsubsection}{1.5cm}{10.5pt}{7.5pt}
-\titlespacing*{\paragraph}{0pt}{0pt}{1.4ex minus 0.2ex} %
+\titlespacing*{\subsubsection}{0pt}{10.5pt}{7.5pt}
+\titlespacing*{\paragraph}{0pt}{7.5pt}{1.4ex minus 0.2ex} %
 
 % From titlesec documentation:
 \newcommand{\periodafter}[1]{#1.}
@@ -298,11 +298,15 @@
   \vspace*{\fill}
   \end{minipage}
 ]
+
 \titleformat{\section}[hang]{\large\bfseries}{\makebox[1.5cm]{\lslmr\thesection\hfill}}{0pt}{\lslmr\MakeUppercase}
+
 \titleformat{\subsection}[hang]{\normalsize\bfseries}{\makebox[1.5cm]{\lslmr\thesubsection\hfill}}{0pt}{\lslmr\MakeUppercase}
-\titleformat{\subsubsection}[hang]{\normalsize\bfseries}{}{0pt}{\lslmr\MakeUppercase}
-\titleformat{\paragraph}[runin]{\bfseries}{}{0pt}{\fontfamily{lmr}\selectfont\periodafter}
+
+\titleformat{\subsubsection}[hang]{\normalsize\bfseries}{\makebox[1.5cm]{\lslmr\thesubsubsection\hfill}}{0pt}{\lslmr\MakeUppercase}
 % Note: makebox width must not depend on font size, so don't use em, ex, etc.
+
+\titleformat{\paragraph}[runin]{\bfseries}{}{0pt}{\fontfamily{lmr}\selectfont\periodafter}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% HEADERS AND FOOTERS
 
@@ -802,6 +806,7 @@ end
 \newcommand*{\mainmatter}{%
 \adjustmtc[3] % Offset because of lists of figures, tables, and symbols
 \setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
 \cleardoublepage
 \pagenumbering{arabic} % Needed immediately before ch1, i.e., here
 \renewcommand{\cftsecfont}{\fontfamily{lmr}\selectfont\bfseries\color{gray3}}
