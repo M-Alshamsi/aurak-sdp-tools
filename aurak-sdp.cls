@@ -87,6 +87,19 @@
   \end{figure}
 }
 
+\NewEnviron{widetbl}[1][h]{
+  \setlength{\widefigwidth}{18cm}
+  \begin{table}[#1]
+    \checkoddpage%
+    \edef\side{\ifoddpage l\else r\fi}%
+    \makebox[\textwidth][\side]{%
+      \begin{minipage}[t]{18cm}% same as \headwidth
+        \BODY
+      \end{minipage}
+    }
+  \end{table}
+}
+
 % the way this is done necessitates use of \captionof{figure} instead of \caption.
 % optional argument is a vertical offset to the figure.
 \NewEnviron{marginfig}[1][0pt]{
