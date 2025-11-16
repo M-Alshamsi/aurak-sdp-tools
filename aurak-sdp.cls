@@ -29,7 +29,7 @@
 %% PRELIMINARY DECLARATIONS %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\LoadClass[letter,twoside]{report}
+\LoadClass[letterpaper,twoside]{report}
 
 %%%%%%%%%%%%%
 %% OPTIONS %%
@@ -125,7 +125,26 @@
 % Fonts and language
 \RequirePackage{fontspec}
 \RequirePackage[english]{babel}
-\setmainfont[Numbers=OldStyle]{CMU Concrete}
+
+% set up font family
+% https://tex.stackexchange.com/questions/79086/
+\setmainfont[
+    Ligatures=TeX,
+    SmallCapsFont={Latin Modern Roman Caps},
+    SlantedFont={* Slanted},
+    ItalicFeatures  = {
+        SmallCapsFont = {LMRomanCaps10-Oblique}
+    },
+    Numbers=OldStyle
+    ]{Latin Modern Roman}
+\newfontface\unshape[]{Latin Modern Roman Unslanted}
+\newcommand\textun[1]{{\unshape #1}}
+\fontspec[
+    FakeBold=4,
+    SmallCapsFont={Latin Modern Roman Caps}
+    ]{Latin Modern Roman}
+\DeclareFontShape{\UTFencname}{LatinModernRoman(0)}{bx}{sc}{<->ssub * LatinModernRoman(1)/m/sc}{}
+\setsansfont{Latin Modern Sans}
 \newcommand{\lining}{\addfontfeature{Numbers=Lining}}
 
 % use Euler math font
@@ -299,6 +318,7 @@
 
 \titleformat{\chapter}[display]%
 {% Format for both title and label:
+  \sffamily\bfseries
 }
 {% Label format:
   \lslmr\color{gray8}\rlap{\scalebox{5}{$CHAPTER\ \thechapter$}}\hspace{10cm}%
@@ -312,11 +332,11 @@
   \end{minipage}
 ]
 
-\titleformat{\section}[hang]{\large\bfseries}{\makebox[1.5cm]{\lslmr\thesection\hfill}}{0pt}{\lslmr\MakeUppercase}
+\titleformat{\section}[hang]{\large\sffamily\bfseries}{\makebox[1.5cm]{\thesection\hfill}}{0pt}{\MakeUppercase}
 
-\titleformat{\subsection}[hang]{\normalsize\bfseries}{\makebox[1.5cm]{\lslmr\thesubsection\hfill}}{0pt}{\lslmr\MakeUppercase}
+\titleformat{\subsection}[hang]{\normalsize\sffamily\bfseries}{\makebox[1.5cm]{\thesubsection\hfill}}{0pt}{\MakeUppercase}
 
-\titleformat{\subsubsection}[hang]{\normalsize\bfseries}{\makebox[1.5cm]{\lslmr\thesubsubsection\hfill}}{0pt}{\lslmr\MakeUppercase}
+\titleformat{\subsubsection}[hang]{\normalsize\sffamily\bfseries}{\makebox[1.5cm]{\thesubsubsection\hfill}}{0pt}{\MakeUppercase}
 % Note: makebox width must not depend on font size, so don't use em, ex, etc.
 
 \titleformat{\paragraph}[runin]{\bfseries}{}{0pt}{\fontfamily{lmr}\selectfont\periodafter}
