@@ -61,7 +61,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DIMENSIONS
 
-\RequirePackage[inner=1.5cm,outer=2.5cm,top=3.5cm,bottom=2cm,marginpar=4.5cm,includemp]{geometry}
+\RequirePackage[inner=1.5cm,top=3.5cm,bottom=2cm,marginpar=4.5cm,totalwidth=\dimexpr\paperwidth-3cm\relax,includemp]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FLOATS AND SUCH
 
@@ -75,20 +75,20 @@
 
 \newlength{\widefigwidth}
 \NewEnviron{widefig}[1][h]{% can't figure out a way to do this with the usual \newenvironment
-  \setlength{\widefigwidth}{18cm}
+  \setlength{\widefigwidth}{\dimexpr\textwidth+\marginparwidth+\marginparsep\relax}
   \begin{figure}[#1]
     \checkoddpage%
     \edef\side{\ifoddpage l\else r\fi}%
     \makebox[\textwidth][\side]{%
-      \begin{minipage}[t]{18cm}% same as \headwidth
-        \BODY
-      \end{minipage}
-    }
-  \end{figure}
+      \begin{minipage}[t]{\dimexpr\textwidth+\marginparwidth+\marginparsep\relax}% same as \headwidth
+        \BODY%
+      \end{minipage}%
+    }%
+  \end{figure}%
 }
 
 \NewEnviron{widetbl}[1][h]{
-  \setlength{\widefigwidth}{18cm}
+  \setlength{\widefigwidth}{\textwidth}
   \begin{table}[#1]
     \checkoddpage%
     \edef\side{\ifoddpage l\else r\fi}%
@@ -497,7 +497,7 @@
 \fancypagestyle{headings}{%
   \fancyhf{}
   \fancyhfoffset[RE,LO]{0cm}
-  \fancyhfoffset[RO,LE]{\dimexpr\marginparwidth+\marginparsep+1cm\relax}
+  \fancyhfoffset[RO,LE]{\dimexpr\marginparwidth+\marginparsep\relax}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0.0pt}
   \fancyhead[ER]{\fontfamily{lmr}\selectfont\slshape\leftmark}
