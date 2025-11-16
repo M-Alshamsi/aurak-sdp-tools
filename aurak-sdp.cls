@@ -23,7 +23,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 % Remember to change the date whenever the class is updated
-\ProvidesClass{aurak-sdp}[2025-10-05 AURAK Senior Design Project Report]
+\ProvidesClass{aurak-sdp}[2025-11-16 AURAK Senior Design Project Report]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PRELIMINARY DECLARATIONS %%
@@ -61,7 +61,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DIMENSIONS
 
-\RequirePackage[inner=1.5cm,top=3.5cm,bottom=2cm,textwidth=\dimexpr13.5cm-\marginparsep\relax,marginpar=4.5cm,ignoremp]{geometry}
+\RequirePackage[inner=1.5cm,outer=2.5cm,top=3.5cm,bottom=2cm,marginpar=4.5cm,includemp]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FLOATS AND SUCH
 
@@ -207,7 +207,7 @@
 
 \newenvironment{chapterpage}[1][\chapterpageheader]{%
   \clearpage
-  \thispagestyle{empty}
+  \pagestyle{empty}
   \pagecolor{gray7}
   \color{gray3}
   {\hfill
@@ -497,7 +497,7 @@
 \fancypagestyle{headings}{%
   \fancyhf{}
   \fancyhfoffset[RE,LO]{0cm}
-  \fancyhfoffset[RO,LE]{\dimexpr\marginparwidth+\marginparsep\relax}
+  \fancyhfoffset[RO,LE]{\dimexpr\marginparwidth+\marginparsep+1cm\relax}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0.0pt}
   \fancyhead[ER]{\fontfamily{lmr}\selectfont\slshape\leftmark}
