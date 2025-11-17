@@ -60,33 +60,37 @@ It passes ``\kern -1pt \texttt{[h]}\kern -1pt'' to the \texttt{figure} by defaul
   \captionof{figure}{Extra-Width Figure}
 \end{widefig}
 
-\begin{marginfig}
+\begin{marginfigure}<0\baselineskip>
   \hrulefill\vskip1pt%
   {\color{gray8}\rule{\textwidth}{\dimexpr49pt+5cm\relax}}%
-  \vspace*{\dimexpr-47pt-5cm\relax}
+  \vspace*{\dimexpr-51pt-5cm\relax}
 
-  \ amazing figure\hfill\vskip2.5cm{\centering insane graphics\par}\vskip2.5cm\hfill love to see it\ \hbox{}\vskip1pt\hrulefill
+  \ amazing figure\hfill\vskip2.5cm{\centering insane graphics\par}\vskip2.5cm\hfill love to see it\ \hbox{}\vskip-6pt\hrulefill
   \captionof{figure}{Margin Figure.\label{fig:mar1}}
-\end{marginfig}
+\end{marginfigure}
 
-To the side is another environment, the \texttt{marginfig}.\index{marginfig}
-Due to some \LaTeX{} esoterica that I don't understand, the \texttt{figure} environment can't be used in margins.
-What's done instead is \texttt{marginpar} with a \texttt{minipage} inside it.
-So you'll need to use ``\verb|\captionof{figure}{your caption}|'' instead of ``\verb|\caption{your caption}|''.
+This document class specifies the margins in such a way that the text body allows for not much more than 75~characters per line.
+This leaves a lot of empty space that can be used for other content.
+Placing figures in the margin is a possible use for that space; to that end, I've included the \textsf{sidenotesplus} package to help.
+To the side is the \texttt{marginfigure} environment from that package.\index{marginfigure}
 
-Margin figures have no protection against flowing off the page.
-To~deal with this\,---and also for times when you want to align the figure with something specific---\,you have the choice to provide to the environment an optional argument, which specifies a vertical (downward) offset.
-If~you give it a negative length, the figure will go~up instead, as you might expect.
+The \texttt{marginfigure} environment acts like a float; it places itself at what an algorithm thinks ``makes the most sense''.
+If you want to make it appear exactly where you specified, you can do this:\par
+{\centering \verb|\begin{marginfigure}<0pt>|\par}
+The use of ``\texttt{<offset>}'', even with a zero length, forces fixed placement of the figure.
+
+Specifying a nonzero length for \texttt{offset} will move the figure down by that length.
+(Negative lengths, therefore, move the figure up.)
 I~recommend moving margin figures by integer increments (or~decrements) of~\verb|\baselineskip|,%
 \footnote{I have this set to 15\,pt.
-If you're unaware, \texttt{\textbackslash{}baselineskip} is a measure of the distance from one ``baseline'' to the next.
-The baseline is that on which letters ``sit''; letters like `g' and `y' go below the baseline.}
+  If you're unaware, \texttt{\textbackslash{}baselineskip} is a measure of the distance from one ``baseline'' to the next.
+  The baseline is that on which letters ``sit''; letters like `g' and `y' go below the baseline.}
 according to how many lines you want to move the figure by.
 In the case of Figure~\ref{fig:mar1}, I placed its code immediately before the ``To the side\ldots'' paragraph; but if I wanted it to start on the line containing {\setlength{\fboxsep}{0pt}\fbox{this box\strut}}, I could begin the environment as~below:
 \begin{center}
-  \verb|\begin{marginfig}[14\baselineskip]|
+  \verb|\begin{marginfigure}<17\baselineskip>|
 \end{center}
-knowing that the box is 14 lines below where the margin figure would be placed \textit{without} the~argument.
+knowing that the box is 17 lines below where the margin figure would have been placed with \texttt{<0pt>}.
 Feel free to try it yourself: add the argument and recompile this document.
 
 \vskip\baselineskip

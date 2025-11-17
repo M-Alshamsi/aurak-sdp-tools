@@ -40,7 +40,7 @@ Unfortunately, I'm not good enough at LaTeX to eliminate all the dirty hacks nee
 As noted above, go ahead and contact me for any issues related to the class or template.
 
 *Alternative:* Add this repo as a git submodule to your project (report) repo.
-Then your `main.tex` can simply do `\documentclass{aurak-sdp-tools/aurak-sdp}`.
+Then your main file can simply do `\documentclass{aurak-sdp-tools/aurak-sdp}`.
 This *will* raise a warning since the class "provides class aurak-sdp".
 You can ignore that.
 
@@ -62,9 +62,9 @@ Refine the class and template and add missing stuff:
 The LaTeX community for all the work put into the kernel, packages, and classes.
 Without them I couldn't have possibly made this thing quickly.
 
-The designers, typographers, authors, and students behind *Concrete Mathematics*, for the following:
+The designers, typographers, authors, and students behind *Concrete Mathematics*, for the following things used in this document class:
 - Table of contents format
-- CMU Concrete and AMS Euler fonts
+- The AMS Euler math font
 - The funny margin notes
 - Section heading format
 
@@ -72,10 +72,10 @@ The TeX Stack Exchange forum for many explanations and a few nontrivial code sni
 
 From AURAK:
 - Dr. Khouloud Salameh ([@ksalameh](https://github.com/ksalameh)) for support and for clarification on requirements required of the report — this class and template wouldn't have become an official thing if not for her help.
-Also for advertising this repo to those doing SDP 1 this semester.
+Also for advertising this repo to those doing SDP 1 in Fall 2025.
 - Nour Mostafa ([@Nour-MK](https://github.com/Nour-MK)) for trailblazing with the first (and fancy) LaTeX SDP report, a semester before me.
 - Hazim Kaloub ([@win-x-u-r](https://github.com/win-x-u-r)) for suggestions and idea-bouncing.
-- Yasmine Abou Saeb ([@yasmine-not-yasmien](https://github.com/yasmine-not-yasmien)) for idea-bouncing and proofreading of tutorial text.
+- Yasmine Abou Saeb ([@yasmine-not-yasmien](https://github.com/yasmine-not-yasmien)) and Mohd Hasanul Alam ([@Hasanul2411](https://github.com/Hasanul2411)) for idea-bouncing and proofreading of tutorial text.
 - Creator of the original MS Word template for inspiration and initial layout.
 (I'm sorry: Who is this?)
 

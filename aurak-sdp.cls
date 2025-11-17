@@ -100,17 +100,7 @@
   \end{table}
 }
 
-% the way this is done necessitates use of \captionof{figure} instead of \caption.
-% optional argument is a vertical offset to the figure.
-\NewEnviron{marginfig}[1][0pt]{
-  \vspace*{#1}
-  \marginpar{
-    \begin{minipage}[t]{\marginparwidth}
-      \BODY
-    \end{minipage}
-  }
-  \vspace*{-#1}
-}
+\RequirePackage{sidenotesplus}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FONTS
 
