@@ -326,7 +326,7 @@
 
 \titleformat{\subsection}[hang]{\normalsize\sffamily\bfseries}{\makebox[1.5cm]{\thesubsection\hfill}}{0pt}{\MakeUppercase}
 
-\titleformat{\subsubsection}[hang]{\normalsize\sffamily\bfseries}{\makebox[1.5cm]{\thesubsubsection\hfill}}{0pt}{\MakeUppercase}
+\titleformat{\subsubsection}[hang]{\normalsize\sffamily\bfseries}{\makebox[1.5cm]{\thesubsubsection\hfill}}{0pt}{}
 % Note: makebox width must not depend on font size, so don't use em, ex, etc.
 
 \titleformat{\paragraph}[runin]{\bfseries}{}{0pt}{\fontfamily{lmr}\selectfont\periodafter}
