@@ -93,7 +93,7 @@
     \checkoddpage%
     \edef\side{\ifoddpage l\else r\fi}%
     \makebox[\textwidth][\side]{%
-      \begin{minipage}[t]{18cm}% same as \headwidth
+      \begin{minipage}[t]{\dimexpr\textwidth+\marginparwidth+\marginparsep\relax}% same as \headwidth
         \BODY
       \end{minipage}
     }
