@@ -599,10 +599,10 @@ end
 \newenvironment{req}[2]{%
   \begingroup
   \setlist[reql]{label=\textbf{\texttt{[#1}\,\texttt{\padnum[#2]{\expandafter\csname thereqli\endcsname}]}},leftmargin=*,labelindent=2em,labelsep=*,itemindent=!,itemsep=0em}
-  \setlist[reql,2]{label=\textbf{\texttt{[#1}\,\texttt{\padnum[#2]{\arabic{reqli}}.\arabic{reqlii}}]}}
-  \setlist[reql,3]{label=\textbf{\texttt{[#1}\,\texttt{\padnum[#2]{\arabic{reqli}}.\arabic{reqlii}.\arabic{reqliii}}]}}
-  \setlist[reql,4]{label=\textbf{\texttt{[#1}\,\texttt{\padnum[#2]{\arabic{reqli}}.\arabic{reqlii}.\arabic{reqliii}.\arabic{reqliv}}]}}
-  \setlist[reql,5]{label=\textbf{\texttt{[#1}\,\texttt{\padnum[#2]{\arabic{reqli}}.\arabic{reqlii}.\arabic{reqliii}.\arabic{reqliv}.\arabic{reqlv}}]}}
+  \setlist[reql,2]{label=\textbf{\texttt{[#1}\,\texttt{\padnum[#2]{\arabic{reqli}}.\arabic{reqlii}]}}}
+  \setlist[reql,3]{label=\textbf{\texttt{[#1}\,\texttt{\padnum[#2]{\arabic{reqli}}.\arabic{reqlii}.\arabic{reqliii}]}}}
+  \setlist[reql,4]{label=\textbf{\texttt{[#1}\,\texttt{\padnum[#2]{\arabic{reqli}}.\arabic{reqlii}.\arabic{reqliii}.\arabic{reqliv}]}}}
+  \setlist[reql,5]{label=\textbf{\texttt{[#1}\,\texttt{\padnum[#2]{\arabic{reqli}}.\arabic{reqlii}.\arabic{reqliii}.\arabic{reqliv}.\arabic{reqlv}]}}}
   % ^ I don't know if there's a better way of doing this :>
   % I'll leave it for another day.
   \begin{reql}
