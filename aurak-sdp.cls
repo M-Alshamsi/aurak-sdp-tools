@@ -436,6 +436,8 @@
 % \tableofcontents command uses \thispagestyle, apparently,
 % so this mitigates that behavior.
 \AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{toc}}}
+\AtBeginDocument{\addtocontents{lof}{\protect\thispagestyle{lof}}}
+\AtBeginDocument{\addtocontents{lot}{\protect\thispagestyle{lot}}}
 
 \fancypagestyle{toc}{%
   \fancyhf{}%
