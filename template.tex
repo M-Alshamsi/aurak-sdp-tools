@@ -4,6 +4,31 @@
 \usepackage{lipsum}
 \usepackage{printlen}
 
+% Comment out the parts you're not currently working on.
+% For example, if you're doing frontmatter you can comment out
+%   the entire argument, keeping only ``\includeonly{}''.
+% (The way this is done, it can end up swapping right and left pages,
+%   but that shouldn't happen when compiling the full report,
+%   so there's no real need to fix it.)
+% To compile the entire report, comment everything,
+%   *including* the ``\includeonly{}''.
+% Note, the bibilography, further reading, and index will only reflect
+%   the parts you've kept in.
+\includeonly{
+  chapters/ch1/ch1,
+%  chapters/ch2/ch2,
+%  chapters/ch3/ch3,
+%  chapters/ch4/ch4,
+%  chapters/ch5/ch5,
+%  chapters/ch6/ch6,
+%  chapters/ch7/ch7,
+%  chapters/ch8/ch8,
+%  chapters/ch9/ch9,
+%  raci,
+%  dictionary,
+%  glossary
+}
+
 \addbibresource{refs.bib}
 
 % Replace these as necessary
@@ -72,33 +97,17 @@ This is where you should put all the symbols used and abbreviations (must be sor
 
 \restoregeometry
 }
+
 \mainmatter % Necessary before chapter 1.
-\input{chapters/ch1/ch1}
-
-\chapter{Background}
-\input{chapters/ch2/ch2}
-
-% [brackets] are the ToC entry --- {braces} are in-text titles.
-\chapter[Literature Review]{Literature Review}
-\input{chapters/ch3/ch3}
-
-\chapter[Project Management]{Project Management}
-\input{chapters/ch4/ch4}
-
-\chapter[Requirements Analysis]{Requirements Analysis}
-\input{chapters/ch5/ch5}
-
-\chapter[System Analysis \& Design]{System Analysis\break\& Design}
-\input{chapters/ch6/ch6}
-
-\chapter[Implementation \& Testing]{Implementation\break\& Testing}
-\input{chapters/ch7/ch7}
-
-\chapter[Impact of the Engineering Solution]{Impact of the Engineering Solution}
-\input{chapters/ch8/ch8}
-
-\chapter[Conclusions and Recommendations]{Conclusions and Recommendations}
-\input{chapters/ch9/ch9}
+\include{chapters/ch1/ch1}
+\include{chapters/ch2/ch2}
+\include{chapters/ch3/ch3}
+\include{chapters/ch4/ch4}
+\include{chapters/ch5/ch5}
+\include{chapters/ch6/ch6}
+\include{chapters/ch7/ch7}
+\include{chapters/ch8/ch8}
+\include{chapters/ch9/ch9}
 
 %% BACKMATTER
 \bibchapter
@@ -119,22 +128,16 @@ This is where you should put all the symbols used and abbreviations (must be sor
 }
 
 \appendix
-\setcounter{chapter}{3} % Appendix D; not A
-\chapter{WBS Dictionary}\label{dict}
-\begin{chapterpage}
-\end{chapterpage}
-\input{dictionary}
+\include{raci}
+\include{dictionary}
 
 \cleardoublepage
-% ^ Has to be done manually since we're setting the counter afterward.
+% ^ Has to be done manually since we're setting the counter afterward in glossary.tex.
 % Otherwise, the last page of appendix D would show F--\thepage!
-\setcounter{chapter}{6}
-\chapter{Glossary}
-\begin{chapterpage}
-\end{chapterpage}\pagestyle{gl}
-\input{glossary}
+\include{glossary}
 
 \cleardoublepage
+% ^ same deal
 \setcounter{chapter}{8}
 \chapter{Index}
 \begin{chapterpage}
