@@ -69,7 +69,7 @@
 \RequirePackage{tabularray}
 \RequirePackage{subcaption}
 \RequirePackage{caption}
-\DeclareCaptionFont{gray3}{\color{gray3}}
+\DeclareCaptionFont{accentdarker}{\color{accentdarker}}
 \RequirePackage[strict]{changepage}
 \RequirePackage{environ}
 
@@ -149,14 +149,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GRAPHICS
 
 \RequirePackage{graphicx}
-
 \RequirePackage{xcolor}
+\RequirePackage{ninecolors}
 
 % The "accent color" for the document
-\definecolor{accent}{RGB}{140, 140, 140}
-\definecolor{accentlite}{RGB}{210, 130, 100}
-\definecolor{accentliter}{RGB}{210, 180, 175}
-\definecolor{titlepagecolor}{rgb}{0,0,0}
+\colorlet{accentdarker}{gray3}
+\colorlet{accentdark}{gray4}
+\colorlet{accent}{gray7}
+\colorlet{accentlight}{gray8}
+\colorlet{accentlighter}{gray9}
+\colorlet{titlepagecolor}{white}
 
 % What color to use for citation hyperlinks
 \definecolor{cite}{RGB}{0, 0, 96}
@@ -209,7 +211,7 @@
 
 \AddToHookWithArguments{cmd/chapter/before}{%
   \clearpage{\thispagestyle{empty}\cleardoublepage}
-  \pagecolor{gray4}
+  \pagecolor{accentdark}
 }
 
 \newcommand{\chapterpageheader}{\MakeUppercase{\chaptertitlename}\ \thechapter\\\MakeUppercase{\chaptitle}}
@@ -217,8 +219,8 @@
 \newenvironment{chapterpage}[1][\chapterpageheader]{%
   \clearpage
   \pagestyle{empty}
-  \pagecolor{gray7}
-  \color{gray3}
+  \pagecolor{accent}
+  \color{accentdarker}
   {\hfill
   \begin{minipage}{12cm}
   \begin{flushright}
@@ -226,8 +228,8 @@
   \end{flushright}
   \end{minipage}
   }\par\vskip1pc
-  \captionsetup{labelfont=gray3}
-  \renewcommand\thefootnote{\textcolor{gray3}{\arabic{footnote}}}
+  \captionsetup{labelfont=accentdarker}
+  \renewcommand\thefootnote{\textcolor{accentdarker}{\arabic{footnote}}}
   \fontsize{12}{15}\selectfont
   \noindent
   \ignorespaces
@@ -247,12 +249,12 @@
     {% Format for both title and label:
     }
     {% Label format:
-      \lslmr\color{gray8}\rlap{\scalebox{5}{$APPENDIX\ \thechapter$}}\hspace{10cm}%
+      \lslmr\color{accentlight}\rlap{\scalebox{5}{$APPENDIX\ \thechapter$}}\hspace{10cm}%
     }{% Distance between label and title:
       0pt
     }{% Commands run before title:
       \begin{minipage}{12cm}
-      \raggedright\Huge\sffamily\bfseries\color{gray9}\MakeUppercase
+      \raggedright\Huge\sffamily\bfseries\color{accentlighter}\MakeUppercase
     }[% Commands run after title:
       \vspace*{\fill}
       \end{minipage}
@@ -268,22 +270,22 @@
 
 \newcommand{\bibchapter}{%
   \clearpage{\thispagestyle{empty}\cleardoublepage}
-  \pagecolor{gray4}
+  \pagecolor{accentdark}
   \thispagestyle{empty}
   \phantomsection\label{chap:bibliography}
   \addcontentsline{toc}{chapter}{Bibliography}
-  {\color{gray8}\rlap{\scalebox{5}{$BIBLIOGRAPHY$}}\hspace{10cm}}
+  {\color{accentlight}\rlap{\scalebox{5}{$BIBLIOGRAPHY$}}\hspace{10cm}}
   \clearpage
   \renewcommand{\chapterpageheader}{BIBLIOGRAPHY}
 }
 
 \newcommand{\frchapter}{%
   \clearpage{\thispagestyle{empty}\cleardoublepage}
-  \pagecolor{gray4}
+  \pagecolor{accentdark}
   \phantomsection
   \thispagestyle{empty}
   \phantomsection\label{chap:furtherreading}
-  {\color{gray8}\rlap{\scalebox{5}{\begin{minipage}{\textwidth}$FURTHER $\\[-.3em]$READING$\end{minipage}}}\hspace{10cm}}
+  {\color{accentlight}\rlap{\scalebox{5}{\begin{minipage}{\textwidth}$FURTHER $\\[-.3em]$READING$\end{minipage}}}\hspace{10cm}}
   \addcontentsline{toc}{chapter}{Further Reading}
   \clearpage
   \renewcommand{\chapterpageheader}{FURTHER READING}
@@ -311,12 +313,12 @@
   \sffamily\bfseries
 }
 {% Label format:
-  \lslmr\color{gray8}\rlap{\scalebox{5}{$CHAPTER\ \thechapter$}}\hspace{10cm}%
+  \lslmr\color{accentlight}\rlap{\scalebox{5}{$CHAPTER\ \thechapter$}}\hspace{10cm}%
 }{% Distance between label and title:
   0pt
 }{% Commands run before title:
   \begin{minipage}{12cm}
-  \raggedright\Huge\sffamily\bfseries\color{gray9}\MakeUppercase
+  \raggedright\Huge\sffamily\bfseries\color{accentlighter}\MakeUppercase
 }[% Commands run after title:
   \vspace*{\fill}
   \end{minipage}
@@ -745,6 +747,7 @@ end
 
 \renewcommand*{\maketitle}{
   \renewcommand\thepage{Cover}
+  \pagecolor{titlepagecolor}
   \begin{titlepage}
     \titlepagedecoration
     \titlepageauraklogo
@@ -777,6 +780,7 @@ end
     in Computer Science, Computer Engineering, and Artificial Intelligence
     at the \dept{} in the \uni.
   \end{titlepage}
+  \clearpage\pagecolor{white}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MISC
@@ -834,8 +838,8 @@ end
 \setcounter{secnumdepth}{3}
 \cleardoublepage
 \pagenumbering{arabic} % Needed immediately before ch1, i.e., here
-\renewcommand{\cftsecfont}{\fontfamily{lmr}\selectfont\bfseries\color{gray3}}
-\renewcommand{\mtcSfont}{\color{gray3}}
+\renewcommand{\cftsecfont}{\fontfamily{lmr}\selectfont\bfseries\color{accentdarker}}
+\renewcommand{\mtcSfont}{\color{accentdarker}}
 \renewcommand{\cftdot}{\rule[2pt]{1pt}{0.4pt}}
 \renewcommand{\cftsubsubsecfont}{\itshape\footnotesize}
 \setlength{\cftsubsubsecindent}{\dimexpr\cftsecindent+\cftsubsecindent+1.5\parindent\relax}
