@@ -1,5 +1,5 @@
 %% aurak-sdp.cls
-%% Copyright 2025 Mohammed Alshamsi
+%% Copyright 2026 Mohammed Alshamsi
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -785,7 +785,7 @@ end
 \def\uni{A Certain University Somewhere}
 \def\school{A Certain School of Something}
 \def\dept{A Certain Department of Something or Other}
-\def\yr{2024--2025}
+\def\yr{2025--2026}
 
 \renewcommand*{\maketitle}{
   \renewcommand\thepage{Cover}

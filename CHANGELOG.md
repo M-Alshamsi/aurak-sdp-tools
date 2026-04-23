@@ -7,7 +7,13 @@ Necessary changes:
 Nov 17th, 2025: Included package `sidenotesplus` for `marginfigure` environment instead of custom `marginfig` environment. Reason: Supports subcaptions.
 Necessary changes:
   - Replace `marginfig` environments with `marginfigure`.
-  - For offsets, use <offset> to match previous behavior.
-      E.g. \begin{marginfig}[\baselineskip]  -->  \begin{marginfigure}<\baselineskip>
+  - For offsets, use `<offset>` to match previous behavior.
+      E.g. `\begin{marginfig}[\baselineskip]`  -->  `\begin{marginfigure}<\baselineskip>`
     This *should* give the exact same result.
     As such, you may have to fiddle around with the offsets somewhat.
+
+Apr 23rd, 2026: Added package options `single`, `single-nomargin`, and `double`.
+Necessary changes:
+  - To preserve old layout, change `\documentclass{aurak-sdp}` to `\documentclass[single]{aurak-sdp`.
+  - `double` is for use with `multicols` environment in text body.
+  - Other layouts (`single-nomargin` and `double`) should NOT use `marginfigure`.
