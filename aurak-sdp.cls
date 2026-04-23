@@ -23,13 +23,19 @@
 
 \NeedsTeXFormat{LaTeX2e}
 % Remember to change the date whenever the class is updated
-\ProvidesClass{aurak-sdp}[2025-11-16 AURAK Senior Design Project Report]
+\ProvidesClass{aurak-sdp}[2026-04-23 AURAK Senior Design Project Report]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PRELIMINARY DECLARATIONS %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \LoadClass[letterpaper,twoside]{report}
+
+\newlength{\innermarginwidth}
+\newlength{\outermarginwidth}
+\newlength{\innerheadruleprotrusion}
+\newlength{\outerheadruleprotrusion}
+\newlength{\fulltextwidth}
 
 %%%%%%%%%%%%%
 %% OPTIONS %%
@@ -40,6 +46,33 @@
 \DeclareOption*{\ClassWarning{aurak-sdp}%
   {Unknown option \CurrentOption}%
   {Remove or correct it please!}%
+}
+\DeclareOption{single-nomargin}{%
+  \setlength{\innermarginwidth}{3.75cm}
+  \setlength{\outermarginwidth}{3.75cm}
+  \setlength{\marginparwidth}{0cm}
+  \setlength{\marginparsep}{0cm}
+  \setlength{\innerheadruleprotrusion}{2.25cm}
+  \setlength{\outerheadruleprotrusion}{2.25cm}
+  \setlength{\fulltextwidth}{\dimexpr\paperwidth-\innermarginwidth-\outermarginwidth\relax}
+}
+\DeclareOption{single}{%
+  \setlength{\innermarginwidth}{1.5cm}
+  \setlength{\outermarginwidth}{1.5cm}
+  \setlength{\marginparwidth}{4.5cm}
+  \setlength{\innerheadruleprotrusion}{0cm}
+  \setlength{\outerheadruleprotrusion}{\dimexpr4.5cm+\marginparsep\relax}
+  \setlength{\fulltextwidth}{\dimexpr\paperwidth-\innermarginwidth-\outermarginwidth-\marginparwidth-\marginparsep\relax}
+}
+\DeclareOption{double}{% only sets up margins neatly.
+                       % use multicols for flexibility
+  \setlength{\innermarginwidth}{1.5cm}
+  \setlength{\outermarginwidth}{1.5cm}
+  \setlength{\marginparwidth}{0cm}
+  \setlength{\marginparsep}{0cm}
+  \setlength{\innerheadruleprotrusion}{0cm}
+  \setlength{\outerheadruleprotrusion}{0cm}
+  \setlength{\fulltextwidth}{\dimexpr\paperwidth-\innermarginwidth-\outermarginwidth\relax}
 }
 \ProcessOptions\relax
 
@@ -61,7 +94,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DIMENSIONS
 
-\RequirePackage[inner=1.5cm,top=3.5cm,bottom=2cm,marginpar=4.5cm,totalwidth=\dimexpr\paperwidth-3cm\relax,includemp]{geometry}
+\RequirePackage[inner=\innermarginwidth,
+  top=3.5cm,
+  bottom=2cm,
+  marginpar=\marginparwidth,
+  totalwidth=\fulltextwidth,
+  ignoremp]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FLOATS AND SUCH
 
@@ -269,7 +307,7 @@
 }
 
 \newcommand{\bibchapter}{%
-  \clearpage{\thispagestyle{empty}\cleardoublepage}
+  \cleardoublepage
   \pagecolor{accentdark}
   \thispagestyle{empty}
   \phantomsection\label{chap:bibliography}
@@ -510,8 +548,8 @@
 
 \fancypagestyle{headings}{%
   \fancyhf{}
-  \fancyhfoffset[RE,LO]{0cm}
-  \fancyhfoffset[RO,LE]{\dimexpr\marginparwidth+\marginparsep\relax}
+  \fancyhfoffset[RE,LO]{\innerheadruleprotrusion}
+  \fancyhfoffset[RO,LE]{\outerheadruleprotrusion}
   \renewcommand{\headrulewidth}{0.4pt}
   \renewcommand{\footrulewidth}{0.0pt}
   \fancyhead[ER]{\fontfamily{lmr}\selectfont\slshape\leftmark}
@@ -672,6 +710,7 @@ end
 }
 \AddToHook{cmd/tableofcontents/after}{%
 \thispagestyle{toc}
+\pagestyle{toc}
 \renewcommand{\cftdot}{}
 }
 
@@ -683,6 +722,7 @@ end
 }
 \AddToHook{cmd/listoftables/after}{%
 \thispagestyle{lot}
+\pagestyle{lot}
 }
 
 \AddToHook{cmd/listoffigures/before}{%
@@ -693,6 +733,7 @@ end
 }
 \AddToHook{cmd/listoffigures/after}{%
 \thispagestyle{lof}
+\pagestyle{lof}
 }
 
 \newcommand{\listofsymbolshdr}{%
@@ -702,6 +743,7 @@ end
 \addcontentsline{toc}{chapter}{List of Symbols and Abbreviations}
 \end{center}
 \thispagestyle{los}
+\pagestyle{los}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE PAGE
